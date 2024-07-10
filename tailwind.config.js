@@ -5,7 +5,11 @@ export default {
       "./src/**/*.{vue,js,ts,jsx,tsx}",
     ],
     theme: {
-      extend: {},
+      extend: {
+        backgroundImage: {
+            'hero': "url('./assets/batman-begins-banner.png')",
+        },
+      },
     },
     plugins: [
     ],
