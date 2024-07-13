@@ -1,5 +1,5 @@
 <template>
-    <Header @toggleInput="toggleInput" />
+    <Header :isVisible="isInputVisible" @toggleInput="toggleInput" />
     <GlobalSearch :isVisible="isInputVisible" />
     <HeroSection />
 </template>

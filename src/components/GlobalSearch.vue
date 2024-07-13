@@ -1,7 +1,7 @@
 <template>
     <div v-if="isVisible">
         <!-- TODO: search icon will come here -->
-        <input type="text" placeholder="Search for movie, tv show or people" class="w-full focus-within:outline-none px-8 py-2">
+        <input type="text" placeholder="Search for movie, tv show or people" class="fixed z-10 w-full focus-within:outline-none px-8 py-2">
     </div>
 </template>
 
