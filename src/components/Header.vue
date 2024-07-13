@@ -1,8 +1,14 @@
-<script setup>
-</script>
-
 <template>
-    <div class="bg-black px-8 py-4">
-        <img src="../assets/tvue-logo.png" class="w-[125px] aspect-auto" alt="TVue logo">
+    <div class="bg-black py-4">
+        <div class="container px-12 flex items-center justify-between">
+            <Logo />
+            <NavList />
+        </div>
     </div>
 </template>
+
+<script setup>
+import Logo from './Logo.vue';
+import NavList from './NavList.vue';
+
+</script>

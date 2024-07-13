@@ -6,9 +6,6 @@ export default {
     ],
     theme: {
       extend: {
-        backgroundImage: {
-            'hero': "url('./assets/batman-begins-banner.png')",
-        },
       },
     },
     plugins: [
