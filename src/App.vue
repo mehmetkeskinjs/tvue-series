@@ -1,6 +1,6 @@
 <template>
-    <Header />
-    <GlobalSearch :isActive="isGlobalSearchActive" />
+    <Header @toggleInput="toggleInput" />
+    <GlobalSearch :isVisible="isInputVisible" />
     <HeroSection />
 </template>
 
@@ -11,7 +11,7 @@
     import { ref, onMounted } from 'vue';
 
     const movie = ref(null);
-    const isGlobalSearchActive = ref(true);
+    const isInputVisible = ref(false);
 
     const fetchMovies = async () => {
         try {
@@ -24,6 +24,10 @@
             console.error(error);
         }
     }
+
+    const toggleInput = () => {
+        isInputVisible.value = !isInputVisible.value;
+    };
 
     onMounted(fetchMovies);
 </script>

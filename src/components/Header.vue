@@ -4,15 +4,20 @@
             <Logo />
             <div class="flex items-center gap-6">
                 <NavList />
-                <HeaderSearchIcon />
+                <button @click="handleToggle" class="text-white">search</button>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-    import HeaderSearchIcon from './HeaderSearchIcon.vue';
+    import { defineEmits } from 'vue';
     import Logo from './Logo.vue';
     import NavList from './NavList.vue';
 
+    const emit = defineEmits(['toggleInput']);
+
+    const handleToggle = () => {
+        emit('toggleInput')
+    }
 </script>
