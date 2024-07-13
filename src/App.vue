@@ -1,14 +1,17 @@
 <template>
     <Header />
+    <GlobalSearch :isActive="isGlobalSearchActive" />
     <HeroSection />
 </template>
 
 <script setup>
     import Header from './components/Header.vue';
+    import GlobalSearch from './components/GlobalSearch.vue';
     import HeroSection from './components/HeroSection.vue';
     import { ref, onMounted } from 'vue';
 
     const movie = ref(null);
+    const isGlobalSearchActive = ref(true);
 
     const fetchMovies = async () => {
         try {
