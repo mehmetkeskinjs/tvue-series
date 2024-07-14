@@ -2,25 +2,27 @@
     <Header :isVisible="isInputVisible" @toggleInput="toggleInput" />
     <GlobalSearch :isVisible="isInputVisible" />
     <HeroSection />
-    <div class="p-8">
-        <h1>Movies</h1>
-        <ul v-if="movies.length" class="flex flex-wrap gap-4">
-          <li v-for="movie in movies" :key="movie.id" class="border max-w-[150px]">
-            <img :src="movie.image" alt="Movie Image" />
-            <h2>{{ movie.title }}</h2>
-            <p>Rating: {{ movie.rating }}</p>
-            <p>Release Date: {{ movie.date }}</p>
-          </li>
-        </ul>
-        <p v-else>Loading movies...</p>
-      </div>
+    <div class="">
+        <div class="container px-12 py-12">
+            <h1 class="text-3xl font-medium">Movies</h1>
+            <ul v-if="movies.length" class="flex gap-4 pt-6 pb-4">
+                <MovieCard
+                    v-for="movie in movies"
+                    :key="movie.id"
+                    :movie="movie"
+                />
+            </ul>
+            <p v-else>Loading movies...</p>
+        </div>
+    </div>
 </template>
 
 <script setup>
     import Header from './components/Header.vue';
     import GlobalSearch from './components/GlobalSearch.vue';
     import HeroSection from './components/HeroSection.vue';
-    import { ref, onMounted } from 'vue';
+    import MovieCard from './components/MovieCard.vue';
+    import { ref, onMounted, watch } from 'vue';
     import { movies as moviesData } from './assets/movies.js'
 
     const movie = ref(null);
@@ -49,6 +51,8 @@
         }, 1000);
         console.log(movies)
     }
+
+    watch(movies)
 
     onMounted(setMovies);
 </script>
