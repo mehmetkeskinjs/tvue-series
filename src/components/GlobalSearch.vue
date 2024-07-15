@@ -3,16 +3,16 @@
         <!-- TODO: search icon will come here -->
         <input
             type="text"
-            placeholder="Search for movie, tv show or people" 
-            class="fixed z-10 w-full focus-within:outline-none px-8 py-2"
-        >
+            placeholder="Search for movie, tv show or people"
+            class="fixed z-10 w-full px-8 py-2 focus-within:outline-none"
+        />
     </div>
 </template>
 
 <script setup>
-    import { defineProps } from 'vue';
+import { defineProps } from 'vue';
 
-    const props = defineProps({
-        isVisible: Boolean
-    })
+const props = defineProps({
+    isVisible: Boolean,
+});
 </script>
