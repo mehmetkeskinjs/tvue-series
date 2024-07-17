@@ -1,7 +1,7 @@
 <template>
     <a href="#" class="relative w-1/6 overflow-hidden rounded-lg shadow-lg">
         <span
-            class="absolute right-4 top-4 flex aspect-square w-6 items-center justify-center rounded-full bg-green-200 text-xs font-semibold text-green-800 ring ring-green-600"
+            class="absolute right-4 top-4 flex aspect-square w-8 items-center justify-center rounded-full bg-green-200 text-base font-semibold text-green-800 ring ring-green-600"
             >{{ movie.rating }}</span
         >
         <img
