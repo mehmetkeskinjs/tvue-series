@@ -9,7 +9,6 @@
                 <button @click="handleToggle" class="font-bold text-white">
                     <span v-if="isVisible">
                         <svg
-                            xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke-width="2"
@@ -25,7 +24,6 @@
                     </span>
                     <span v-else>
                         <svg
-                            xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke-width="2"
