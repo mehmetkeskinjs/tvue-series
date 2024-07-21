@@ -1,5 +1,7 @@
 <template>
-    <div class="bg-black py-4">
+    <div
+        class="absolute top-0 z-10 flex h-16 w-screen items-center bg-transparent"
+    >
         <div class="container flex items-center justify-between px-12">
             <Logo />
             <div class="flex items-center gap-6">
