@@ -27,3 +27,5 @@ dist-ssr
 # this is my vs code settings json
 src/assets/settings.json
 src/assets/movies.js
+
+bgs.txt
