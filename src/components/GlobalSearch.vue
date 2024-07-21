@@ -4,7 +4,7 @@
         <input
             type="text"
             placeholder="Search for movie, tv show or people"
-            class="fixed z-10 w-full px-8 py-2 focus-within:outline-none"
+            class="fixed top-16 z-10 w-full px-8 py-2 transition-all focus-within:outline-none"
         />
     </div>
 </template>
