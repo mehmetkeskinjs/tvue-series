@@ -1,21 +1,33 @@
 <template>
-    <a href="#" class="relative w-1/6 overflow-hidden rounded-lg shadow-lg">
-        <span
-            class="absolute right-4 top-4 flex aspect-square w-8 items-center justify-center rounded-full bg-green-200 text-base font-semibold text-green-800 ring ring-green-600"
-            >{{ movie.rating }}</span
-        >
+    <a
+        href="#"
+        class="relative min-w-[calc(100%/6)] overflow-hidden rounded-lg shadow-lg"
+    >
         <img
-            :src="movie.image"
+            :src="generateImage(movie.poster_path)"
             :alt="movie.title"
             class="h-full w-full object-cover"
         />
         <div
-            class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black p-4"
+            class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-zinc-900 from-20% p-4"
         >
-            <h3 class="truncate text-base font-semibold text-white">
+            <h3 class="truncate text-base font-normal text-white">
                 {{ movie.title }}
             </h3>
             <span class="mt-1 text-xs text-gray-400">{{ date }}</span>
+            <span
+                class="mt-2 flex w-fit items-center rounded-lg px-2 py-1 text-base font-medium text-zinc-100 ring-1 ring-inset ring-zinc-700"
+                >{{ movie.vote_average.toFixed(1)
+                }}<span class="-ml-1 flex items-center font-light">
+                    <svg viewBox="0 0 10 16" fill="currentColor" class="size-4">
+                        <path
+                            fill-rule="evenodd"
+                            d="M10.074 2.047a.75.75 0 0 1 .449.961L6.705 13.507a.75.75 0 0 1-1.41-.513L9.113 2.496a.75.75 0 0 1 .961-.449Z"
+                            clip-rule="evenodd"
+                        /></svg
+                    >10</span
+                ></span
+            >
         </div>
     </a>
 </template>
@@ -46,6 +58,10 @@ const props = defineProps({
     },
 });
 
+const generateImage = (path) => {
+    return `https://media.themoviedb.org/t/p/w440_and_h660_face/${path}`;
+};
+
 const createNewDate = (rawDate) => {
     const splittedDate = rawDate.split('-');
 
@@ -53,6 +69,6 @@ const createNewDate = (rawDate) => {
 };
 
 onMounted(() => {
-    createNewDate(props.movie.date);
+    createNewDate(props.movie.release_date);
 });
 </script>

@@ -3,19 +3,16 @@
     <GlobalSearch :isVisible="isInputVisible" />
     <HeroSection />
 
-    <div>
-        <div class="container">
-            <h1 class="mt-5 text-3xl font-medium">Movies</h1>
+    <div class="container px-12">
+        <h1 class="mt-5 text-3xl font-medium">Movies</h1>
 
-            <ul v-if="movies.length" class="flex gap-4 pb-4 pt-6">
-                <MovieCard
-                    v-for="movie in movies"
-                    :key="movie.id"
-                    :movie="movie"
-                />
-            </ul>
-            <p v-else>Loading movies...</p>
-        </div>
+        <ul
+            v-if="movies.length"
+            class="flex w-full min-w-full flex-row gap-2 overflow-scroll pb-4 pt-6"
+        >
+            <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+        </ul>
+        <p v-else>Loading movies...</p>
     </div>
 </template>
 
@@ -25,35 +22,35 @@ import GlobalSearch from './components/GlobalSearch.vue';
 import HeroSection from './components/HeroSection/HeroSection.vue';
 import MovieCard from './components/MovieCard.vue';
 import { ref, onMounted } from 'vue';
-import { movies as moviesData } from './assets/movies.js';
 
-const movie = ref(null);
 const movies = ref([]);
 const isInputVisible = ref(false);
 
-// const fetchMovies = async () => {
-//     try {
-//         const API_KEY = import.meta.env.VITE_TMBD_API_KEY;
-//         const response = await fetch(
-//             `https://api.themoviedb.org/3/movie/157336?api_key=${API_KEY}`,
-//         );
-//         const data = await response.json();
+const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_READ_ACCESS_TOKEN}`,
+    },
+};
 
-//         movie.value = data;
-//     } catch (error) {
-//         console.error(error);
-//     }
-// };
+const fetchMovies = async () => {
+    try {
+        const response = await fetch(
+            'https://api.themoviedb.org/3/trending/movie/week?language=en-US',
+            options,
+        );
+        const { results } = await response.json();
+        console.log(results);
+        movies.value = results;
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 const toggleInput = () => {
     isInputVisible.value = !isInputVisible.value;
 };
 
-const setMovies = () => {
-    setTimeout(() => {
-        movies.value = moviesData;
-    }, 1000);
-};
-
-onMounted(setMovies);
+onMounted(fetchMovies);
 </script>
