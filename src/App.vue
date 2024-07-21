@@ -2,9 +2,11 @@
     <Header :isVisible="isInputVisible" @toggleInput="toggleInput" />
     <GlobalSearch :isVisible="isInputVisible" />
     <HeroSection />
-    <div class="">
-        <div class="container px-12 py-12">
-            <h1 class="text-3xl font-medium">Movies</h1>
+
+    <div>
+        <div class="container">
+            <h1 class="mt-5 text-3xl font-medium">Movies</h1>
+
             <ul v-if="movies.length" class="flex gap-4 pb-4 pt-6">
                 <MovieCard
                     v-for="movie in movies"
