@@ -1,7 +1,7 @@
 <template>
     <div class="mt-10 flex w-full items-center justify-between">
         <div class="flex flex-col text-xl">
-            <span class="text-zinc-200">{{ movie.name }}</span>
+            <span class="capitalize text-zinc-200">{{ movie.name }}</span>
             <span class="text-xs font-light text-zinc-400">{{
                 movie.year
             }}</span>

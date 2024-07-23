@@ -3,6 +3,7 @@
     <GlobalSearch :isVisible="isInputVisible" />
     <HeroSection />
 
+    <!-- TODO: Componentize this -->
     <div class="container px-12">
         <h1 class="mt-5 text-3xl font-medium">Movies</h1>
 

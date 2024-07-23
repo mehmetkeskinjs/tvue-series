@@ -38,10 +38,10 @@ const platformList = ref([]);
 
 onMounted(() => {
     heroMovieDetail.value = {
-        name: 'Joker',
-        year: '2019',
+        name: 'napoleon',
+        year: '2024',
         link: '#',
-        image: 'https://images.alphacoders.com/104/1042134.jpg',
+        image: 'https://m.media-amazon.com/images/M/MV5BNGY3OWI2ZTctNmYxOS00MmNmLTgxM2ItNDZhMzJjMGM0ZTZhXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX2160_.jpg',
     };
 });
 
