@@ -27,7 +27,7 @@
                         v-for="movie in featuredMovies"
                         :key="movie.id"
                         :bullet-id="movie.id"
-                        class="aspect-square w-2 rounded-full bg-zinc-100 transition-all duration-300"
+                        class="aspect-square w-[10px] rounded-full bg-zinc-100 transition-all duration-300"
                         :class="{
                             'opacity-100 ring ring-zinc-600':
                                 activeBullet === movie.id - 1,
