@@ -5,11 +5,11 @@
 
     <!-- TODO: Componentize this -->
     <div class="container px-12">
-        <h1 class="mt-5 text-3xl font-medium">Movies</h1>
+        <h1 class="mt-8 text-3xl font-medium">Movies</h1>
 
         <ul
             v-if="movies.length"
-            class="flex w-full min-w-full flex-row gap-2 overflow-scroll pb-4 pt-6"
+            class="flex w-full min-w-full flex-row gap-2 overflow-auto pb-4 pt-6"
         >
             <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
         </ul>
@@ -42,7 +42,6 @@ const fetchMovies = async () => {
             options,
         );
         const { results } = await response.json();
-        console.log(results);
         movies.value = results;
     } catch (error) {
         console.error(error);

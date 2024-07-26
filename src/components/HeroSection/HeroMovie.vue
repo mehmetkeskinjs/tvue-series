@@ -1,8 +1,11 @@
 <template>
-    <div class="mt-10 flex w-full items-center justify-between">
+    <div class="mt-5 flex w-full items-center justify-between">
         <div class="flex flex-col text-xl">
-            <span class="capitalize text-zinc-200">{{ movie.name }}</span>
-            <span class="text-xs font-light text-zinc-400">{{
+            <span :key="movie.id" class="capitalize text-zinc-200">{{
+                movie.title
+            }}</span>
+
+            <span :key="movie.id" class="text-xs font-light text-zinc-400">{{
                 movie.year
             }}</span>
         </div>
@@ -27,6 +30,8 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+
 const props = defineProps({
     movie: {
         type: Object,

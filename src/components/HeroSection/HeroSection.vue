@@ -2,8 +2,8 @@
     <div class="relative h-screen">
         <img
             :src="heroMovieDetail.image"
-            class="h-full w-full object-cover"
-            alt=""
+            class="h-full w-full object-cover transition-all"
+            :alt="heroMovieDetail.title"
         />
         <div
             class="absolute inset-0 flex h-full items-end bg-gradient-to-t from-black/80 to-black/50 2xl:pb-24"
@@ -18,8 +18,26 @@
                     Discover your favorite movies or TV shows
                 </p>
 
+                <!-- bulletpoints -->
+
                 <SearchInput />
-                <HeroMovie :movie="heroMovieDetail" />
+
+                <div class="mt-8 flex items-center gap-3">
+                    <button
+                        v-for="movie in featuredMovies"
+                        :key="movie.id"
+                        :bullet-id="movie.id"
+                        class="aspect-square w-2 rounded-full bg-zinc-100 transition-all duration-300"
+                        :class="{
+                            'opacity-100 ring ring-zinc-600':
+                                activeBullet === movie.id - 1,
+                            'opacity-50': activeBullet !== movie.id - 1,
+                        }"
+                        @click="setBulletId(movie.id - 1)"
+                    ></button>
+                </div>
+
+                <HeroMovie :movie="heroMovieDetail" v-if="heroMovieDetail" />
                 <PlatformList :platforms="platformList" />
             </div>
         </div>
@@ -27,7 +45,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import HeroMovie from './HeroMovie.vue';
 import PlatformList from './PlatformList.vue';
 import SearchInput from './SearchInput.vue';
@@ -35,17 +53,45 @@ import { platforms as platformData } from '../../assets/platforms.js';
 
 const heroMovieDetail = ref({});
 const platformList = ref([]);
+const activeBullet = ref(0);
 
-onMounted(() => {
-    heroMovieDetail.value = {
-        name: 'napoleon',
+let featuredMovies = [
+    {
+        id: 1,
+        title: 'napoleon',
         year: '2024',
-        link: '#',
         image: 'https://m.media-amazon.com/images/M/MV5BNGY3OWI2ZTctNmYxOS00MmNmLTgxM2ItNDZhMzJjMGM0ZTZhXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX2160_.jpg',
-    };
-});
+    },
+    {
+        id: 2,
+        title: 'joker',
+        year: '2019',
+        image: 'https://images.alphacoders.com/104/1042134.jpg',
+    },
+    {
+        id: 3,
+        title: 'the batman',
+        year: '2022',
+        image: 'https://m.media-amazon.com/images/M/MV5BMWNmNGI2YmYtMTk3Ny00ZjM1LThjYjUtOTRkYWJmNzcyODNhXkEyXkFqcGdeQXVyNDIyNjA2MTk@._V1_FMjpg_UX2160_.jpg',
+    },
+];
+
+const generateMovieLink = (title) => {
+    console.log(title);
+};
+
+featuredMovies = featuredMovies.map((movie) => ({
+    ...movie,
+    link: generateMovieLink(movie.title),
+}));
+
+const setBulletId = (id) => {
+    activeBullet.value = id;
+    heroMovieDetail.value = featuredMovies[activeBullet.value];
+};
 
 onMounted(() => {
     platformList.value = platformData;
+    heroMovieDetail.value = featuredMovies[activeBullet.value];
 });
 </script>
