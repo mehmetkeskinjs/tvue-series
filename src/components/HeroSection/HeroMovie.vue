@@ -11,7 +11,7 @@
         </div>
         <a
             :href="movie.link"
-            class="group flex items-center rounded-full bg-white px-3 py-1"
+            class="group flex cursor-pointer select-none items-center rounded-full bg-white px-3 py-1"
         >
             See details
             <span
