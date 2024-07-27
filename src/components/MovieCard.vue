@@ -12,7 +12,7 @@
             class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-zinc-900 from-20% p-4"
         >
             <h3 class="truncate text-base font-normal text-white">
-                {{ movie.title }}
+                {{ movie.title || movie.name }}
             </h3>
             <span class="mt-1 text-xs text-gray-400">{{ date }}</span>
             <span
@@ -63,12 +63,22 @@ const generateImage = (path) => {
 };
 
 const createNewDate = (rawDate) => {
+    if (rawDate === '') {
+        date.value = '';
+
+        return;
+    }
+
     const splittedDate = rawDate.split('-');
 
-    date.value = `${months[Number(splittedDate[1])].slice(0, 3)} ${splittedDate[2]}, ${splittedDate[0]}`;
+    date.value = `${months[Number(splittedDate[1]) - 1].slice(0, 3)} ${splittedDate[2]}, ${splittedDate[0]}`;
 };
 
 onMounted(() => {
-    createNewDate(props.movie.release_date);
+    if (props.movie.release_date) {
+        createNewDate(props.movie.release_date);
+    } else {
+        createNewDate(props.movie.first_air_date);
+    }
 });
 </script>
