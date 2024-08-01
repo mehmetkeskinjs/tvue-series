@@ -2,39 +2,17 @@
     <Header :isVisible="isInputVisible" @toggleInput="toggleInput" />
     <GlobalSearch :isVisible="isInputVisible" />
     <HeroSection />
-
-    <!-- TODO: Componentize this -->
     <MoviesSlider title="Movies" :isMoviesLoading="isMoviesLoading" :movies="movies"/>
-
-    <div class="bg-zinc-900 py-8">
-        <div class="container px-12">
-            <h1 class="text-3xl font-medium text-zinc-100">TV series</h1>
-
-            <div v-if="isSeriesLoading" class="flex gap-2 pb-4 pt-6">
-                <MovieCardSkeleton v-for="n in 6" :key="n" />
-            </div>
-            <ul
-                v-else
-                class="flex w-full min-w-full flex-row gap-2 overflow-auto pb-4 pt-6"
-            >
-                <MovieCard
-                    v-for="show in tvseries"
-                    :key="show.id"
-                    :movie="show"
-                />
-            </ul>
-        </div>
-    </div>
+    <TvShowsSlider title="Tv Shows" :isSeriesLoading="isSeriesLoading" :tvseries="tvseries" />
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
 import Header from './components/Header/Header.vue';
 import GlobalSearch from './components/GlobalSearch.vue';
 import HeroSection from './components/HeroSection/HeroSection.vue';
-import MovieCard from './components/MovieCard.vue';
 import MoviesSlider from './components/MoviesSlider/MoviesSlider.vue';
-import { ref, onMounted } from 'vue';
-import MovieCardSkeleton from './components/MovieCardSkeleton.vue';
+import TvShowsSlider from './components/TvShowsSlider/TvShowsSlider.vue';
 
 const movies = ref([]);
 const tvseries = ref([]);
