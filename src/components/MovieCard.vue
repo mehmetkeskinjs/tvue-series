@@ -1,7 +1,7 @@
 <template>
     <a
         href="#"
-        class="relative min-w-[calc(100%/6)] overflow-hidden rounded-lg shadow-lg"
+        class="relative min-w-[calc(100%/6)] snap-start overflow-hidden rounded-lg shadow-lg"
     >
         <img
             :src="generateImage(movie.poster_path)"
@@ -24,7 +24,9 @@
                             fill-rule="evenodd"
                             d="M10.074 2.047a.75.75 0 0 1 .449.961L6.705 13.507a.75.75 0 0 1-1.41-.513L9.113 2.496a.75.75 0 0 1 .961-.449Z"
                             clip-rule="evenodd"
-                        /></svg>10</span>
+                        /></svg
+                    >10</span
+                >
             </span>
         </div>
     </a>

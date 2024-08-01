@@ -45,7 +45,7 @@
         </div>
         <ul
             v-else
-            class="no-scrollbar flex w-full min-w-full flex-row gap-2 overflow-auto pb-4 pt-6"
+            class="no-scrollbar flex w-full min-w-full snap-x snap-mandatory flex-row gap-2 overflow-auto pb-4 pt-6"
         >
             <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
         </ul>
