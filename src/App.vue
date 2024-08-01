@@ -2,8 +2,16 @@
     <Header :isVisible="isInputVisible" @toggleInput="toggleInput" />
     <GlobalSearch :isVisible="isInputVisible" />
     <HeroSection />
-    <MoviesSlider title="Movies" :isMoviesLoading="isMoviesLoading" :movies="movies"/>
-    <TvShowsSlider title="Tv Shows" :isSeriesLoading="isSeriesLoading" :tvseries="tvseries" />
+    <MoviesSlider
+        title="Movies"
+        :isMoviesLoading="isMoviesLoading"
+        :movies="movies"
+    />
+    <TvShowsSlider
+        title="Tv Shows"
+        :isSeriesLoading="isSeriesLoading"
+        :tvseries="tvseries"
+    />
 </template>
 
 <script setup>
@@ -11,8 +19,8 @@ import { ref, onMounted } from 'vue';
 import Header from './components/Header/Header.vue';
 import GlobalSearch from './components/GlobalSearch.vue';
 import HeroSection from './components/HeroSection/HeroSection.vue';
-import MoviesSlider from './components/MoviesSlider/MoviesSlider.vue';
 import TvShowsSlider from './components/TvShowsSlider/TvShowsSlider.vue';
+import MoviesSlider from './components/MoviesSlider/MoviesSlider.vue';
 
 const movies = ref([]);
 const tvseries = ref([]);
