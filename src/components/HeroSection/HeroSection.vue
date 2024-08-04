@@ -78,6 +78,7 @@ let featuredMovies = [
 
 const generateMovieLink = (title) => {
     console.log(title);
+    return `https://www.google.com/search?q=${title}`;
 };
 
 featuredMovies = featuredMovies.map((movie) => ({

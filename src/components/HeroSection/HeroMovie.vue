@@ -11,6 +11,7 @@
         </div>
         <a
             :href="movie.link"
+            target="_blank"
             class="group flex cursor-pointer select-none items-center rounded-full bg-white px-3 py-1"
         >
             See details
