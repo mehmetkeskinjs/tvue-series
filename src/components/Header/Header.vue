@@ -44,7 +44,6 @@
 </template>
 
 <script setup>
-import { defineEmits } from 'vue';
 import Logo from './Logo.vue';
 import NavList from './NavList.vue';
 
