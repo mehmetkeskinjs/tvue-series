@@ -1,11 +1,10 @@
 <template>
-    <div class="relativepx-12 container py-8">
+    <div class="container relative px-12 py-8">
         <div class="flex items-center justify-between">
-            <div class="flex items-center gap-4">
+            <div class="flex items-end gap-6">
                 <h1 class="text-3xl font-medium">{{ title }}</h1>
-                <div class="rounded-full border border-black p-4">
-                    Nagivator
-                </div>
+
+                <TabNavigator />
             </div>
             <div class="flex items-center gap-3">
                 <button
@@ -66,6 +65,7 @@
 import MovieCardSkeleton from '../MovieCardSkeleton.vue';
 import MovieCard from '../MovieCard.vue';
 import NewMovieCard from '../NewMovieCard.vue';
+import TabNavigator from '../TabNavigator.vue';
 
 defineProps({
     title: {

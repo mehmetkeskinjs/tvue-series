@@ -1,7 +1,7 @@
 <template>
     <a
         href="#"
-        class="min-w-[calc(100%/5)] snap-start overflow-hidden rounded-xl bg-white text-neutral-500 shadow-lg transition duration-200 hover:bg-neutral-200/50"
+        class="min-w-[calc(100%/5)] snap-start overflow-hidden rounded-3xl bg-white text-neutral-500 shadow-lg transition duration-200 hover:bg-neutral-200/50"
     >
         <h3 class="truncate p-4">
             {{ movie.title || movie.name }}
