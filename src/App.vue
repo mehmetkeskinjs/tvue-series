@@ -7,11 +7,11 @@
         :isMoviesLoading="isMoviesLoading"
         :movies="movies"
     />
-    <TvShowsSlider
+    <!-- <TvShowsSlider
         title="Tv Shows"
         :isSeriesLoading="isSeriesLoading"
         :tvseries="tvseries"
-    />
+    /> -->
 </template>
 
 <script setup>
