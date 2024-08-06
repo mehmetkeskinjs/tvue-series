@@ -10,12 +10,12 @@
                 <button
                     :class="{
                         'cursor-pointer bg-neutral-200 ring-neutral-300/20':
-                            currentIndex !== 0,
+                            !isPrevButtonDisabled,
                         'cursor-not-allowed bg-neutral-200/40 text-neutral-400 ring-neutral-100/20':
-                            currentIndex === 0,
+                            isPrevButtonDisabled,
                     }"
-                    @click="currentIndex--"
-                    :disabled="currentIndex === 0"
+                    @click="prevSlider"
+                    :disabled="isPrevButtonDisabled"
                     class="flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full ring"
                 >
                     <svg
@@ -35,12 +35,12 @@
                 <button
                     :class="{
                         'cursor-pointer bg-neutral-200 ring-neutral-300/20':
-                            currentIndex !== sliderLength,
+                            !isNextButtonDisabled,
                         'cursor-not-allowed bg-neutral-200/40 text-neutral-400 ring-neutral-100/20':
-                            currentIndex === sliderLength,
+                            isNextButtonDisabled,
                     }"
-                    :disabled="currentIndex === sliderLength"
-                    @click="currentIndex++"
+                    :disabled="isNextButtonDisabled"
+                    @click="nextSlider"
                     class="flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full ring"
                 >
                     <svg
@@ -65,6 +65,7 @@
         </div>
         <ul
             v-else
+            ref="sliderContainer"
             class="no-scrollbar flex w-full min-w-full snap-x snap-mandatory flex-row gap-2 overflow-auto pb-4 pt-6"
         >
             <NewMovieCard
@@ -82,10 +83,12 @@ import NewMovieCard from '../NewMovieCard.vue';
 import TabNavigator from '../TabNavigator.vue';
 import { ref } from 'vue';
 
+const sliderContainer = ref(null);
+const isNextButtonDisabled = ref(false);
+const isPrevButtonDisabled = ref(true);
 const currentIndex = ref(0);
-const sliderLength = ref(10);
 
-defineProps({
+const { movies } = defineProps({
     title: {
         type: String,
         required: true,
@@ -99,4 +102,8 @@ defineProps({
         required: true,
     },
 });
+
+const prevSlider = () => {};
+
+const nextSlider = () => {};
 </script>

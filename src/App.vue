@@ -19,7 +19,7 @@ import { ref, onMounted } from 'vue';
 import Header from './components/Header/Header.vue';
 import GlobalSearch from './components/GlobalSearch.vue';
 import HeroSection from './components/HeroSection/HeroSection.vue';
-import TvShowsSlider from './components/TvShowsSlider/TvShowsSlider.vue';
+// import TvShowsSlider from './components/TvShowsSlider/TvShowsSlider.vue';
 import MoviesSlider from './components/MoviesSlider/MoviesSlider.vue';
 
 const movies = ref([]);
