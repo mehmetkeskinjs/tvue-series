@@ -8,7 +8,15 @@
             </div>
             <div class="flex items-center gap-3">
                 <button
-                    class="flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-200 ring ring-neutral-300/20"
+                    :class="{
+                        'cursor-pointer bg-neutral-200 ring-neutral-300/20':
+                            currentIndex !== 0,
+                        'cursor-not-allowed bg-neutral-200/40 text-neutral-400 ring-neutral-100/20':
+                            currentIndex === 0,
+                    }"
+                    @click="currentIndex--"
+                    :disabled="currentIndex === 0"
+                    class="flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full ring"
                 >
                     <svg
                         fill="none"
@@ -25,7 +33,15 @@
                     </svg>
                 </button>
                 <button
-                    class="flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full bg-neutral-200 ring ring-neutral-300/20"
+                    :class="{
+                        'cursor-pointer bg-neutral-200 ring-neutral-300/20':
+                            currentIndex !== sliderLength,
+                        'cursor-not-allowed bg-neutral-200/40 text-neutral-400 ring-neutral-100/20':
+                            currentIndex === sliderLength,
+                    }"
+                    :disabled="currentIndex === sliderLength"
+                    @click="currentIndex++"
+                    class="flex aspect-square w-10 cursor-pointer items-center justify-center rounded-full ring"
                 >
                     <svg
                         fill="none"
@@ -51,7 +67,6 @@
             v-else
             class="no-scrollbar flex w-full min-w-full snap-x snap-mandatory flex-row gap-2 overflow-auto pb-4 pt-6"
         >
-            <!-- <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" /> -->
             <NewMovieCard
                 v-for="movie in movies"
                 :key="movie.id"
@@ -63,9 +78,12 @@
 
 <script setup>
 import MovieCardSkeleton from '../MovieCardSkeleton.vue';
-import MovieCard from '../MovieCard.vue';
 import NewMovieCard from '../NewMovieCard.vue';
 import TabNavigator from '../TabNavigator.vue';
+import { ref } from 'vue';
+
+const currentIndex = ref(0);
+const sliderLength = ref(10);
 
 defineProps({
     title: {
