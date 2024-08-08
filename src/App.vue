@@ -7,19 +7,19 @@
         :isMoviesLoading="isMoviesLoading"
         :movies="movies"
     />
-    <!-- <TvShowsSlider
+    <TvShowsSlider
         title="Tv Shows"
         :isSeriesLoading="isSeriesLoading"
         :tvseries="tvseries"
-    /> -->
+    />
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import Header from './components/Header/Header.vue';
 import GlobalSearch from './components/GlobalSearch.vue';
 import HeroSection from './components/HeroSection/HeroSection.vue';
-// import TvShowsSlider from './components/TvShowsSlider/TvShowsSlider.vue';
+import TvShowsSlider from './components/TvShowsSlider/TvShowsSlider.vue';
 import MoviesSlider from './components/MoviesSlider/MoviesSlider.vue';
 
 const movies = ref([]);
@@ -27,6 +27,7 @@ const tvseries = ref([]);
 const isInputVisible = ref(false);
 const isMoviesLoading = ref(true);
 const isSeriesLoading = ref(true);
+const keyword = ref('popular');
 
 const options = {
     method: 'GET',
@@ -39,7 +40,7 @@ const options = {
 const fetchMovies = async () => {
     try {
         const response = await fetch(
-            'https://api.themoviedb.org/3/trending/movie/week?language=en-US',
+            `https://api.themoviedb.org/3/movie/${keyword.value}?language=en-US&page=1`,
             options,
         );
         const { results } = await response.json();
@@ -71,7 +72,8 @@ const toggleInput = () => {
 };
 
 onMounted(() => {
-    fetchMovies();
     fetchTVSeries();
 });
+
+watch(keyword, fetchMovies, { immediate: true });
 </script>

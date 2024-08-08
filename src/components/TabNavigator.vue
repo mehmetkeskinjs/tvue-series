@@ -21,11 +21,11 @@ const activeIndex = ref(0);
 const tabs = [
     {
         id: 1,
-        name: 'popularr',
+        name: 'popular',
     },
     {
         id: 2,
-        name: 'latest',
+        name: 'top rated',
     },
 ];
 
