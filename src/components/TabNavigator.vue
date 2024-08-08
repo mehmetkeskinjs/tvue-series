@@ -1,8 +1,35 @@
 <template>
     <div class="rounded-md bg-neutral-300/50 p-1">
-        <button class="rounded bg-white px-4 py-1">Popular</button>
-        <button class="rounded bg-transparent px-4 py-1">Latest</button>
+        <button
+            v-for="tab in tabs"
+            :key="tab.id"
+            :class="{
+                'bg-white': activeIndex === tab.id - 1,
+            }"
+            @click="setActiveIndex(tab.id)"
+            class="rounded px-4 py-1 capitalize transition-all duration-200"
+        >
+            {{ tab.name }}
+        </button>
     </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+
+const activeIndex = ref(0);
+const tabs = [
+    {
+        id: 1,
+        name: 'popularr',
+    },
+    {
+        id: 2,
+        name: 'latest',
+    },
+];
+
+const setActiveIndex = (id) => {
+    activeIndex.value = id - 1;
+};
+</script>
