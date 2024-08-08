@@ -45,11 +45,15 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref } from 'vue';
 import HeroMovie from './HeroMovie.vue';
 import PlatformList from './PlatformList.vue';
 import SearchInput from './SearchInput.vue';
 import { platforms as platformData } from '../../assets/platforms.js';
+
+import napoleonImage from '@/assets/napoleon-bg.jpg';
+import jokerImage from '@/assets/joker-bg.jpg';
+import batmanImage from '@/assets/batman-bg.jpg';
 
 const heroMovieDetail = ref({});
 const platformList = ref([]);
@@ -60,24 +64,23 @@ let featuredMovies = [
         id: 1,
         title: 'napoleon',
         year: '2024',
-        image: 'https://m.media-amazon.com/images/M/MV5BNGY3OWI2ZTctNmYxOS00MmNmLTgxM2ItNDZhMzJjMGM0ZTZhXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX2160_.jpg',
+        image: napoleonImage,
     },
     {
         id: 2,
         title: 'joker',
         year: '2019',
-        image: 'https://images.alphacoders.com/104/1042134.jpg',
+        image: jokerImage,
     },
     {
         id: 3,
         title: 'the batman',
         year: '2022',
-        image: 'https://m.media-amazon.com/images/M/MV5BMWNmNGI2YmYtMTk3Ny00ZjM1LThjYjUtOTRkYWJmNzcyODNhXkEyXkFqcGdeQXVyNDIyNjA2MTk@._V1_FMjpg_UX2160_.jpg',
+        image: batmanImage,
     },
 ];
 
 const generateMovieLink = (title) => {
-    console.log(title);
     return `https://www.google.com/search?q=${title}`;
 };
 
